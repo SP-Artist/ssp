@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="portfolioApp">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Name - Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body ng-controller="MainController">
+    <!-- Header Section -->
+    <header>
+        <div class="container">
+            <h1>Your Name</h1>
+            <p>GCP SQL Developer | Content Creator | Event Coordinator</p>
+            <nav>
+                <ul>
+                    <li ng-click="selectTab('about')">About</li>
+                    <li ng-click="selectTab('experience')">Experience</li>
+                    <li ng-click="selectTab('projects')">Projects</li>
+                    <li ng-click="selectTab('contact')">Contact</li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <div class="container">
+            <!-- About Section -->
+            <section ng-show="isSelected('about')">
+                <h2>About Me</h2>
+                <p>{{portfolio.objective}}</p>
+            </section>
+
+            <!-- Experience Section -->
+            <section ng-show="isSelected('experience')">
+                <h2>Experience</h2>
+                <div ng-repeat="job in portfolio.experience">
+                    <h3>{{job.title}} - {{job.company}}</h3>
+                    <p>{{job.duration}}</p>
+                    <ul>
+                        <li ng-repeat="task in job.tasks">{{task}}</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Projects Section -->
+            <section ng-show="isSelected('projects')">
+                <h2>Projects & Achievements</h2>
+                <div ng-repeat="project in portfolio.projects">
+                    <h3>{{project.title}}</h3>
+                    <p>{{project.description}}</p>
+                </div>
+            </section>
+
+            <!-- Contact Section -->
+            <section ng-show="isSelected('contact')">
+                <h2>Contact</h2>
+                <form>
+                    <label for="name">Name:</label><br>
+                    <input type="text" id="name" name="name"><br>
+                    <label for="email">Email:</label><br>
+                    <input type="email" id="email" name="email"><br>
+                    <label for="message">Message:</label><br>
+                    <textarea id="message" name="message" rows="4"></textarea><br><br>
+                    <button type="submit">Submit</button>
+                </form>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Your Name. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
